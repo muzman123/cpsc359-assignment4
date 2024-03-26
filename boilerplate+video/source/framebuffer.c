@@ -126,3 +126,50 @@ void drawImage(unsigned char * img, int width, int height, int offx, int offy) {
         drawPixel(x,y,argb_color);
     }
 }
+
+void drawSquare(int rowStart, int columnStart, int squareSize, unsigned int color)
+{
+    int row, column, rowEnd, columnEnd;
+    unsigned int *pixel = framebuffer;
+
+
+    // Calculate where the row and columns end
+    rowEnd = rowStart + squareSize;
+    columnEnd = columnStart + squareSize;
+
+    // Draw the square row by row, from the top down
+    for (row = rowStart; row < rowEnd; row++) {
+	// Draw each pixel in the row from left to right
+        for (column = columnStart; column < columnEnd; column++) {
+	    // Draw the individual pixel by setting its
+	    // RGB value in the frame buffer
+            pixel[(row * width) + column] = color;
+        }
+    }
+}
+
+void drawCheckerboard(int numberOfRows, int numberOfColumns, int squareSize,
+		       unsigned int color1, unsigned int color2)
+{
+    int i, j;
+
+    // Draw the rows from the top down
+    for (i = 0; i < numberOfRows; i++) {
+	// Draw the squares for the evenly numbered rows
+	if ((i % 2) == 0) {
+	    // Draw alternating squares starting with the first color
+	    for (j = 0; j < numberOfColumns; j += 2) {
+		drawSquare(i * squareSize, j * squareSize, squareSize, color1);
+		drawSquare(i * squareSize, (j + 1) * squareSize, squareSize, color2);
+	    }
+	}
+	// Draw the squares for the oddly numbered rows
+	else {
+	    // Draw alternating squares starting with the second color
+	    for (j = 0; j < numberOfColumns; j += 2) {
+		drawSquare(i * squareSize, j * squareSize, squareSize, color2);
+		drawSquare(i * squareSize, (j + 1) * squareSize, squareSize, color1);
+	    }
+	}
+    }	    
+}
