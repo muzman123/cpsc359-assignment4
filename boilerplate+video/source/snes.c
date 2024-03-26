@@ -31,7 +31,7 @@ static unsigned *gpioPtr = (unsigned*) GPIO_BASE;
 #define OUT_GPIO(g) *(gpioPtr+((g)/10)) |= (1<<(((g)%10)*3))
 #define SET_GPIO_ALT(g,a) *(gpioPtr+(((g)/10))) |= (((a)<=3?(a)+4:(a)==4?3:2)<<(((g)%10)*3))
 
-void snesStart() {
+/*void snesStart() {
     initSNES();
     printarts("Please press a button\n");
     unsigned int * initbuttons;
@@ -44,9 +44,13 @@ void snesStart() {
             printarts("program is terminating...");
             return 0;
 
-        };
+        }
+        if(initbuttons[5] == 0)
+        {
+            updateSnakePos(10,0);
+        }
     }
-}
+}*/
 
 void checkState(int* buttons)
 {

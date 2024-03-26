@@ -1,4 +1,4 @@
-
+/*
 struct object {
     int startx;
     int starty;
@@ -30,3 +30,6 @@ struct gameState {
     object snake;
 
 };
+
+struct gameState initGameState();
+*/
