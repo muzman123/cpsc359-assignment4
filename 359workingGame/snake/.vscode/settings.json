@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "image.h": "c",
+        "fire.h": "c",
+        "gameover.h": "c",
+        "lev1.h": "c",
+        "antipointer.h": "c"
+    }
+}
