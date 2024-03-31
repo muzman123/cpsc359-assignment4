@@ -13,39 +13,33 @@ struct GameState gameStage;
 void drawLevel1(){
 
 	gameStage.currentLevel = 0;
-	for( int i = 0; i<20;i++){
+	for( int i = 0; i < 20;i++){
 		for(int j = 0; j<20;j++){
-			drawImage(fence.pixel_data,fence.width,fence.height,i*32, j*32);
+			drawImage(fencepic.pixel_data,fencepic.width,fencepic.height,i*32, j*32);
 			gameStage.mapper[i][j] = 0;
 		}
 	}
 
 
-	for(int i = 0; i < 3;i++){
-		for(int j = 0; j<20; j++){
-			drawImage(tile.pixel_data,tile.width,tile.height,j*32, i*32);
+	for(int i = 0; i < 20;i++){
+		for(int j = 0; j < 2; j++){
+			drawImage(tile.pixel_data,tile.width,tile.height,i*32, j*32);
 			gameStage.mapper[i][j] = 1;
 		}
 	}
-	for(int i = 0; i < 11;i++){
-		for(int j = 38; j<20; j++){
-			drawImage(tile.pixel_data,tile.width,tile.height,j*32, i*32);
-			gameStage.mapper[i][j] = 1;
-		}
-	}
-	for(int i = 0; i < 19;i++){
-		for(int j = 0; j<3; j++){
-			drawImage(tile.pixel_data,tile.width,tile.height,j*32, i*32);
+	for(int i = 0; i < 2;i++){
+		for(int j = 0; j < 20; j++){
+			drawImage(tile.pixel_data,tile.width,tile.height,i*32, j*32);
 			gameStage.mapper[i][j] = 1;
 		}
 	}
 
-	for(int i = 1; i < 10;i++){
-		drawImage(tile.pixel_data,tile.width,tile.height,i*32, 64);
-		gameStage.mapper[2][i] = 1;
+	for(int j = 6; j < 20;j++){
+		drawImage(tile.pixel_data,tile.width,tile.height,10*32, j*32);
+		gameStage.mapper[10][j] = 1;
 	}
 
-	int j = 21;
+	/*int j = 21;
 	for(int i = 0; i < 20;i++){
 		drawImage(tile.pixel_data,tile.width,tile.height,j*32, i*32);
 		gameStage.mapper[j][i] = 1;
@@ -60,7 +54,7 @@ void drawLevel1(){
 	for(int i = 0; i < (gameStage.lives); i++){
 		drawImage(tile.pixel_data,tile.width,tile.height,0, i*32);
 	}
-
+	
 	// DRAW PLATFORMS
 
 	gameStage.starti = 3*32;
@@ -102,6 +96,8 @@ void drawLevel1(){
 	gameStage.endj = 24*32;
 	drawImage(lev1.pixel_data,lev1.width,lev1.height,576, 1);
 	//drawImage(gameStage.endj, gameStage.endi + 32, &tilemap.images[pointer]);
+
+	*/
 }
 /*
 // LEVEL 2 DRAW METHOD

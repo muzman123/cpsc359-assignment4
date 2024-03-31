@@ -28,7 +28,7 @@ LOAD build/ssp.o
 LOAD build/uart.o
                 0x0000000000080000                . = 0x80000
 
-.text           0x0000000000080000     0x1a20
+.text           0x0000000000080000     0x16f4
  *(.text.boot)
  .text.boot     0x0000000000080000       0x50 build/start.o
                 0x0000000000080000                _start
@@ -41,111 +41,110 @@ LOAD build/uart.o
                 0x0000000000080434                drawRect
                 0x0000000000080524                drawImage
  .text          0x0000000000080624        0x0 build/image.o
- .text          0x0000000000080624      0x760 build/level.o
+ .text          0x0000000000080624      0x274 build/level.o
                 0x0000000000080624                drawLevel1
- .text          0x0000000000080d84      0x5d8 build/main.o
-                0x0000000000080d84                printf
-                0x0000000000080da4                main
- .text          0x000000000008135c       0xac build/mbox.o
-                0x000000000008135c                mbox_call
- .text          0x0000000000081408      0x2f0 build/snes.o
-                0x0000000000081408                writeClock
-                0x000000000008145c                writeLatch
-                0x00000000000814b0                readData
-                0x00000000000814f4                init_snes_lines
-                0x00000000000815c8                read_snes
-                0x00000000000816a8                wait
- .text          0x00000000000816f8       0x1c build/ssp.o
-                0x00000000000816f8                __stack_chk_fail
- .text          0x0000000000081714      0x30c build/uart.o
-                0x0000000000081714                spin_for_cycles
-                0x0000000000081748                uart_init
-                0x00000000000818b4                uart_send
-                0x00000000000818f4                uart_getc
-                0x0000000000081944                uart_puts
-                0x00000000000819a0                uart_hex
+ .text          0x0000000000080898      0x798 build/main.o
+                0x0000000000080898                printf
+                0x00000000000808b8                main
+ .text          0x0000000000081030       0xac build/mbox.o
+                0x0000000000081030                mbox_call
+ .text          0x00000000000810dc      0x2f0 build/snes.o
+                0x00000000000810dc                writeClock
+                0x0000000000081130                writeLatch
+                0x0000000000081184                readData
+                0x00000000000811c8                init_snes_lines
+                0x000000000008129c                read_snes
+                0x000000000008137c                wait
+ .text          0x00000000000813cc       0x1c build/ssp.o
+                0x00000000000813cc                __stack_chk_fail
+ .text          0x00000000000813e8      0x30c build/uart.o
+                0x00000000000813e8                spin_for_cycles
+                0x000000000008141c                uart_init
+                0x0000000000081588                uart_send
+                0x00000000000815c8                uart_getc
+                0x0000000000081618                uart_puts
+                0x0000000000081674                uart_hex
 
-.iplt           0x0000000000081a20        0x0
- .iplt          0x0000000000081a20        0x0 build/start.o
+.iplt           0x00000000000816f4        0x0
+ .iplt          0x00000000000816f4        0x0 build/start.o
 
-.rodata         0x0000000000081a20   0x19b78a
+.rodata         0x00000000000816f8   0x19b7a2
  *(.rodata .rodata.* .gnu.linkonce.r*)
- .rodata        0x0000000000081a20     0x8050 build/level.o
- .rodata        0x0000000000089a70   0x193715 build/main.o
- *fill*         0x000000000021d185        0x3 
- .rodata        0x000000000021d188       0x22 build/ssp.o
+ .rodata        0x00000000000816f8     0x8050 build/level.o
+ .rodata        0x0000000000089748   0x193730 build/main.o
+ .rodata        0x000000000021ce78       0x22 build/ssp.o
                 [!provide]                        PROVIDE (_data = .)
 
-.rela.dyn       0x000000000021d1b0        0x0
- .rela.iplt     0x000000000021d1b0        0x0 build/start.o
+.rela.dyn       0x000000000021cea0        0x0
+ .rela.iplt     0x000000000021cea0        0x0 build/start.o
  .rela.text.boot
-                0x000000000021d1b0        0x0 build/start.o
+                0x000000000021cea0        0x0 build/start.o
 
-.data           0x000000000021d1b0   0x2ac670
+.data           0x000000000021cea0   0x2ac670
  *(.data .data.* .gnu.linkonce.d*)
- .data          0x000000000021d1b0        0x0 build/start.o
- .data          0x000000000021d1b0        0x0 build/framebuffer.o
- .data          0x000000000021d1b0   0x2ac668 build/image.o
-                0x000000000021d1b0                imgData0
-                0x000000000021e1b0                imgData1
-                0x000000000021f1b0                imgData2
-                0x00000000002201b0                imgData3
-                0x00000000002211b0                imgData4
-                0x00000000002221b0                imgData5
-                0x00000000002231b0                imgData6
-                0x00000000002241b0                imgData7
-                0x00000000002251b0                imgData8
-                0x00000000002261b0                startData0
-                0x0000000000239a30                continueData1
-                0x000000000024d2b0                gameoverData2
-                0x0000000000260b30                startoverData3
-                0x00000000002743b0                pausedData4
-                0x0000000000287c30                quitData5
-                0x000000000029b4b0                blackpointer
-                0x000000000029c4b0                imgData30
-                0x00000000003906f0                windata0
-                0x00000000003e8530                loseData
-                0x0000000000440370                imgData300
-                0x000000000045d830                imgData50
-                0x0000000000461830                imgData60
-                0x0000000000465830                imgData70
-                0x0000000000469830                imgData80
-                0x000000000046d830                imgData90
-                0x0000000000471830                imgData100
-                0x00000000004c9670                tilemap
- .data          0x00000000004c9818        0x0 build/level.o
- .data          0x00000000004c9818        0x0 build/main.o
- .data          0x00000000004c9818        0x0 build/mbox.o
- .data          0x00000000004c9818        0x8 build/snes.o
- .data          0x00000000004c9820        0x0 build/ssp.o
- .data          0x00000000004c9820        0x0 build/uart.o
+ .data          0x000000000021cea0        0x0 build/start.o
+ .data          0x000000000021cea0        0x0 build/framebuffer.o
+ .data          0x000000000021cea0   0x2ac668 build/image.o
+                0x000000000021cea0                imgData0
+                0x000000000021dea0                imgData1
+                0x000000000021eea0                imgData2
+                0x000000000021fea0                imgData3
+                0x0000000000220ea0                imgData4
+                0x0000000000221ea0                imgData5
+                0x0000000000222ea0                imgData6
+                0x0000000000223ea0                imgData7
+                0x0000000000224ea0                imgData8
+                0x0000000000225ea0                startData0
+                0x0000000000239720                continueData1
+                0x000000000024cfa0                gameoverData2
+                0x0000000000260820                startoverData3
+                0x00000000002740a0                pausedData4
+                0x0000000000287920                quitData5
+                0x000000000029b1a0                blackpointer
+                0x000000000029c1a0                imgData30
+                0x00000000003903e0                windata0
+                0x00000000003e8220                loseData
+                0x0000000000440060                imgData300
+                0x000000000045d520                imgData50
+                0x0000000000461520                imgData60
+                0x0000000000465520                imgData70
+                0x0000000000469520                imgData80
+                0x000000000046d520                imgData90
+                0x0000000000471520                imgData100
+                0x00000000004c9360                tilemap
+ .data          0x00000000004c9508        0x0 build/level.o
+ .data          0x00000000004c9508        0x0 build/main.o
+ .data          0x00000000004c9508        0x0 build/mbox.o
+ .data          0x00000000004c9508        0x8 build/snes.o
+ .data          0x00000000004c9510        0x0 build/ssp.o
+ .data          0x00000000004c9510        0x0 build/uart.o
 
-.igot.plt       0x00000000004c9820        0x0
- .igot.plt      0x00000000004c9820        0x0 build/start.o
+.igot.plt       0x00000000004c9510        0x0
+ .igot.plt      0x00000000004c9510        0x0 build/start.o
 
-.bss            0x00000000004c9820      0xd60
-                0x00000000004c9820                . = ALIGN (0x10)
-                0x00000000004c9820                __bss_start = .
+.bss            0x00000000004c9510      0xd60
+                0x00000000004c9510                . = ALIGN (0x10)
+                0x00000000004c9510                __bss_start = .
  *(.bss .bss.*)
- .bss           0x00000000004c9820        0x0 build/start.o
- .bss           0x00000000004c9820       0x18 build/framebuffer.o
-                0x00000000004c9820                width
-                0x00000000004c9824                height
-                0x00000000004c9828                pitch
-                0x00000000004c9830                framebuffer
- .bss           0x00000000004c9838        0x0 build/image.o
- .bss           0x00000000004c9838      0xcb4 build/level.o
-                0x00000000004c9838                gameStage
- .bss           0x00000000004ca4ec        0x4 build/main.o
-                0x00000000004ca4ec                gameStart
- .bss           0x00000000004ca4f0       0x90 build/mbox.o
-                0x00000000004ca4f0                mbox
- .bss           0x00000000004ca580        0x0 build/snes.o
- .bss           0x00000000004ca580        0x0 build/ssp.o
- .bss           0x00000000004ca580        0x0 build/uart.o
+ .bss           0x00000000004c9510        0x0 build/start.o
+ .bss           0x00000000004c9510       0x18 build/framebuffer.o
+                0x00000000004c9510                width
+                0x00000000004c9514                height
+                0x00000000004c9518                pitch
+                0x00000000004c9520                framebuffer
+ .bss           0x00000000004c9528        0x0 build/image.o
+ .bss           0x00000000004c9528      0xcb4 build/level.o
+                0x00000000004c9528                gameStage
+ .bss           0x00000000004ca1dc        0x4 build/main.o
+                0x00000000004ca1dc                gameStart
+ .bss           0x00000000004ca1e0       0x90 build/mbox.o
+                0x00000000004ca1e0                mbox
+ .bss           0x00000000004ca270        0x0 build/snes.o
+ .bss           0x00000000004ca270        0x0 build/ssp.o
+ .bss           0x00000000004ca270        0x0 build/uart.o
  *(COMMON)
-                0x00000000004ca580                __bss_end = .
-                0x00000000004ca580                _end = .
+                0x00000000004ca270                __bss_end = .
+                0x00000000004ca270                _end = .
 
 /DISCARD/
  *(.comment)
@@ -156,15 +155,15 @@ LOAD build/uart.o
 OUTPUT(kernel8.elf elf64-littleaarch64)
 LOAD linker stubs
 
-.debug_info     0x0000000000000000     0x15fa
+.debug_info     0x0000000000000000     0x149c
  .debug_info    0x0000000000000000      0x347 build/framebuffer.o
  .debug_info    0x0000000000000347      0x32b build/image.o
- .debug_info    0x0000000000000672      0x5e8 build/level.o
- .debug_info    0x0000000000000c5a      0x4a1 build/main.o
- .debug_info    0x00000000000010fb       0xba build/mbox.o
- .debug_info    0x00000000000011b5      0x234 build/snes.o
- .debug_info    0x00000000000013e9       0x68 build/ssp.o
- .debug_info    0x0000000000001451      0x1a9 build/uart.o
+ .debug_info    0x0000000000000672      0x48a build/level.o
+ .debug_info    0x0000000000000afc      0x4a1 build/main.o
+ .debug_info    0x0000000000000f9d       0xba build/mbox.o
+ .debug_info    0x0000000000001057      0x234 build/snes.o
+ .debug_info    0x000000000000128b       0x68 build/ssp.o
+ .debug_info    0x00000000000012f3      0x1a9 build/uart.o
 
 .debug_abbrev   0x0000000000000000      0x806
  .debug_abbrev  0x0000000000000000      0x132 build/framebuffer.o
@@ -194,31 +193,31 @@ LOAD linker stubs
  .debug_aranges
                 0x0000000000000140       0x30 build/uart.o
 
-.debug_line     0x0000000000000000      0xc40
+.debug_line     0x0000000000000000      0xa45
  .debug_line    0x0000000000000000      0x1e6 build/framebuffer.o
  .debug_line    0x00000000000001e6       0x3f build/image.o
- .debug_line    0x0000000000000225      0x414 build/level.o
- .debug_line    0x0000000000000639      0x24f build/main.o
- .debug_line    0x0000000000000888       0x9b build/mbox.o
- .debug_line    0x0000000000000923      0x148 build/snes.o
- .debug_line    0x0000000000000a6b       0x5c build/ssp.o
- .debug_line    0x0000000000000ac7      0x179 build/uart.o
+ .debug_line    0x0000000000000225      0x195 build/level.o
+ .debug_line    0x00000000000003ba      0x2d3 build/main.o
+ .debug_line    0x000000000000068d       0x9b build/mbox.o
+ .debug_line    0x0000000000000728      0x148 build/snes.o
+ .debug_line    0x0000000000000870       0x5c build/ssp.o
+ .debug_line    0x00000000000008cc      0x179 build/uart.o
 
-.debug_str      0x0000000000000000      0x431
+.debug_str      0x0000000000000000      0x434
  .debug_str     0x0000000000000000       0xde build/framebuffer.o
                                         0x10f (size before relaxing)
  .debug_str     0x00000000000000de      0x12b build/image.o
                                         0x1a4 (size before relaxing)
- .debug_str     0x0000000000000209      0x103 build/level.o
-                                        0x1a3 (size before relaxing)
- .debug_str     0x000000000000030c       0x89 build/main.o
-                                        0x1d5 (size before relaxing)
- .debug_str     0x0000000000000395       0x7e build/mbox.o
- .debug_str     0x0000000000000395       0x54 build/snes.o
+ .debug_str     0x0000000000000209      0x106 build/level.o
+                                        0x1a6 (size before relaxing)
+ .debug_str     0x000000000000030f       0x89 build/main.o
+                                        0x1d9 (size before relaxing)
+ .debug_str     0x0000000000000398       0x7e build/mbox.o
+ .debug_str     0x0000000000000398       0x54 build/snes.o
                                         0x145 (size before relaxing)
- .debug_str     0x00000000000003e9       0x11 build/ssp.o
+ .debug_str     0x00000000000003ec       0x11 build/ssp.o
                                          0x62 (size before relaxing)
- .debug_str     0x00000000000003fa       0x37 build/uart.o
+ .debug_str     0x00000000000003fd       0x37 build/uart.o
                                          0xc4 (size before relaxing)
 
 .debug_line_str
@@ -234,7 +233,7 @@ LOAD linker stubs
                                         0x107 (size before relaxing)
  .debug_line_str
                 0x00000000000000de       0x3b build/main.o
-                                        0x11b (size before relaxing)
+                                        0x11c (size before relaxing)
  .debug_line_str
                 0x0000000000000119        0xe build/mbox.o
                                          0xbb (size before relaxing)

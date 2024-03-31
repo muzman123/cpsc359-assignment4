@@ -7,7 +7,7 @@
 //#include "myheader.h"
 //#include "images/lev1.h"
 #include "images/snake.h"
-#include "images/tile.h"
+#include "images/fence.h"
 #include "images/starts.h"
 #include "images/arrow.h"
 #include "images/antipointer.h"
@@ -23,8 +23,8 @@ int main(){
 	init_snes_lines();
     init_framebuffer(); // You can use framebuffer, width, height and pitch variables available in framebuffer.h
     printf("bruv");
-	unsigned int *game_start = (unsigned int *) CLK_REG;
-	unsigned int game_end = *game_start +(120 * 1000000);
+	unsigned int *game_start;
+	unsigned int game_end = *game_start +( 10 * 1000000);
 
     gameStage.lives = 4;
     gameStage.currentLevel = 0;
@@ -63,7 +63,7 @@ int main(){
 			{
 				fillScreen(0x00000000);
 				drawLevel1();
-				drawImage(snake.pixel_data,snake.width,snake.height,4,4);
+				drawImage(snake.pixel_data,snake.width,snake.height,gameStage.s.posx*32,gameStage.s.posy*32);
 
 				gameStart = 1;
 			}
@@ -75,7 +75,15 @@ int main(){
 			}
 		}
 
+		*game_start = (unsigned int *) CLK_REG;
 		while(gameStart) {
+
+			if(game_start >= game_end)
+			{
+				printf("game over");
+				fillScreen(0x00000000);
+				break;
+			}
 			unsigned int lastInput = input;
 			input = read_snes();
 
@@ -83,27 +91,59 @@ int main(){
 			{
 				if(input == UP)
 				{
-					drawImage(tile.pixel_data,tile.width,tile.height,gameStage.s.posx*32,gameStage.s.posy*32);
+					if(gameStage.mapper[gameStage.s.posx][(gameStage.s.posy-1)] == 1) 
+					{
+						printf("it work");
+						continue;
+
+					}
+					else{
+					drawImage(fencepic.pixel_data,fencepic.width,fencepic.height,gameStage.s.posx*32,gameStage.s.posy*32);
 					gameStage.s.posy -= 1;
 					drawImage(snake.pixel_data,snake.width,snake.height,gameStage.s.posx*32,gameStage.s.posy*32);
+					}
 				}
 				if(input == DOWN)
 				{
-					drawImage(tile.pixel_data,tile.width,tile.height,gameStage.s.posx*32,gameStage.s.posy*32);
+					if(gameStage.mapper[gameStage.s.posx][(gameStage.s.posy+1)] == 1) 
+					{
+						printf("it work");
+						continue;
+
+					}
+					else{
+					drawImage(fencepic.pixel_data,fencepic.width,fencepic.height,gameStage.s.posx*32,gameStage.s.posy*32);
 					gameStage.s.posy += 1;
 					drawImage(snake.pixel_data,snake.width,snake.height,gameStage.s.posx*32,gameStage.s.posy*32);
+					}
 				}
 				if(input == LEFT)
 				{
-					drawImage(tile.pixel_data,tile.width,tile.height,gameStage.s.posx*32,gameStage.s.posy*32);
+					if(gameStage.mapper[gameStage.s.posx-1][(gameStage.s.posy)] == 1) 
+					{
+						printf("it work");
+						continue;
+
+					}
+					else{
+					drawImage(fencepic.pixel_data,fencepic.width,fencepic.height,gameStage.s.posx*32,gameStage.s.posy*32);
 					gameStage.s.posx -= 1;
 					drawImage(snake.pixel_data,snake.width,snake.height,gameStage.s.posx*32,gameStage.s.posy*32);
+					}
 				}
 				if(input == RIGHT)
 				{
-					drawImage(tile.pixel_data,tile.width,tile.height,gameStage.s.posx*32,gameStage.s.posy*32);
+					if(gameStage.mapper[gameStage.s.posx+1][(gameStage.s.posy)] == 1) 
+					{
+						printf("it work");
+						continue;
+
+					}
+					else{
+					drawImage(fencepic.pixel_data,fencepic.width,fencepic.height,gameStage.s.posx*32,gameStage.s.posy*32);
 					gameStage.s.posx += 1;
 					drawImage(snake.pixel_data,snake.width,snake.height,gameStage.s.posx*32,gameStage.s.posy*32);
+					}
 				}
 			}
 		}
