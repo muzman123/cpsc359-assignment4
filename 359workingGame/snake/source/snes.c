@@ -12,9 +12,9 @@
 #define GPSET0  7           //write 1
 #define GPCLR0  10          //clear 0
 
-#define GPIO_BASE   0xFE200000
+#define GPIO_BASE       0xFE200000
 
-#define CLO_REG     0x7E003004
+#define CLK_REG     0xFE003004
 
 static unsigned *gpioPtr = (unsigned*) GPIO_BASE;
 

@@ -1,5 +1,4 @@
 #pragma once
-#include "image.h"
 
 extern unsigned int width, height, pitch;
 extern unsigned char* framebuffer;

@@ -2,7 +2,7 @@
 #	makefile
 #	by Mohamad Elzohbi.
 #
-#	A makefile script for building mixed C & Assembly programs RPI3
+#	A makefile script for building mixed C & Assembly programs RPI4 (Winter 2024)
 ###############################################################################
 
 
